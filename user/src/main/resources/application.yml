@@ -1,0 +1,20 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: user
+  data:
+  datasource:
+    url: jdbc:mysql://localhost:3307/embarkx
+    username: embarkx
+    password: embarkx
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+server:
+  port: 8082
