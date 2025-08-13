@@ -1,0 +1,9 @@
+ docker exec -it kafka_container bash
+
+/opt/kafka/bin/kafka-topics.sh --create --topic new-topic --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+/opt/kafka/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+/opt/kafka/bin/kafka-topics.sh --describe --topic my-topic --bootstrap-server localhost:9092
+/opt/kafka/bin/kafka-console-producer.sh --topic my-topic --bootstrap-server localhost:9092
+/opt/kafka/bin/kafka-console-consumer.sh --topic my-topic --bootstrap-server localhost:9092 --from-beginning
+/opt/kafka/bin/kafka-console-producer.sh --topic my-topic --bootstrap-server localhost:9092 --property "parse.key=true" --property "key.separator=:"
+

@@ -17,14 +17,38 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-#  h2:
-#    console:
-#      enabled: true
-#  datasource:
-#    url: jdbc:h2:mem:test
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: create
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        createOrder-out-0:
+          destination: order.exchange
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: localhost:9092
+
+#      rabbit:
+#        bindings:
+#          createOrder-out-0:
+#            producer:
+#              routing-key-expression: '''order.tracking'''
+
 server:
   port: 8084
+
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    hostname: localhost
+    ip-address: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://localhost:8089/eureka/
+    register-with-eureka: true
+    fetch-registry: true

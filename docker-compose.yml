@@ -47,6 +47,30 @@ services:
     networks:
       - backend
     restart: unless-stopped
+
+  rabbitmq:
+    container_name: rabbitmp_container
+    image: rabbitmq:4-management
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672" # Management UI
+    networks:
+      - backend
+    restart: unless-stopped
+
+  kafka:
+    container_name: kafka_container
+    image: apache/kafka:4.0.0
+    ports:
+      - "9092:9092"
+    networks:
+      - backend
+    restart: unless-stopped
+
+
 networks:
   backend:
     driver: bridge

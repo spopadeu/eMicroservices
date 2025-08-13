@@ -18,3 +18,15 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
 server:
   port: 8082
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+    ip-address: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://localhost:8089/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
